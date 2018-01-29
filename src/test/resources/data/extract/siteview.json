@@ -1,0 +1,355 @@
+{
+  "data": {},
+  "documentType": "site",
+  "hasChangesToPublish": false,
+  "creationDate": 1493211791307,
+  "type": "sys_form",
+  "parentId": "811b8349-2c96-89ae-487a-161b385b133b",
+  "parentType": "sys_module",
+  "modificationDate": 1504099571736,
+  "view": {
+    "header": {
+      "backComponent": {},
+      "right": {
+        "components": [
+          {
+            "icon": "ion-camera",
+            "name": "Camera",
+            "action": {
+              "code": "camera"
+            }
+          },
+          {
+            "icon": "ion-images",
+            "name": "Gallery",
+            "action": {
+              "code": "gallery"
+            }
+          }
+        ]
+      }
+    },
+    "rows": [
+      {
+        "cols": [
+          {
+            "width": "Default",
+            "alignment": "Left",
+            "component": {
+              "type": "input",
+              "fieldProps": {
+                "helptext": "Enter Site Name",
+                "dataType": "Text",
+                "labelType": "Stacked",
+                "property": "siteName",
+                "dataTypeProps": {
+                  "fromChars": 1,
+                  "caseType": "Capitalise",
+                  "toChars": 30
+                },
+                "model": "data.siteName",
+                "label": "Site Name",
+                "isMandatory": false
+              },
+              "id": "86db8949"
+            }
+          },
+          {
+            "width": "Default",
+            "alignment": "Left",
+            "component": {
+              "type": "input",
+              "fieldProps": {
+                "helptext": "Enter Site Extends From",
+                "dataType": "Text",
+                "labelType": "Stacked",
+                "property": "siteExtendsFromDesc",
+                "dataTypeProps": {
+                  "fromChars": 1,
+                  "caseType": "Capitalise",
+                  "toChars": 30
+                },
+                "model": "data.siteExtendsFromDesc",
+                "label": "Site Extends From",
+                "isMandatory": false
+              },
+              "id": "00eb4bf9"
+            }
+          },
+          {
+            "width": "Default",
+            "alignment": "Left",
+            "component": {
+              "type": "input",
+              "fieldProps": {
+                "helptext": "Site Extends To",
+                "dataType": "Text",
+                "labelType": "Stacked",
+                "property": "siteExtendsToDesc",
+                "dataTypeProps": {
+                  "fromChars": 1,
+                  "caseType": "Capitalise",
+                  "toChars": 30
+                },
+                "model": "data.siteExtendsToDesc",
+                "label": "Site Extends To",
+                "isMandatory": false
+              },
+              "id": "9a0b699a"
+            }
+          },
+          {
+            "width": "Default",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "id": "id"
+                  },
+                  "view": "sys_template::7b0feda2-152d-4f9f-9927-56ae8e7d4fe8",
+                  "code": "gotoView"
+                },
+                "label": "Site Details",
+                "buttonWidth": "Block"
+              },
+              "id": "40fb78b8"
+            }
+          }
+        ]
+      },
+      {
+        "cols": [
+          {
+            "width": "Default",
+            "alignment": "Left",
+            "component": {
+              "type": "input",
+              "fieldProps": {
+                "helptext": "",
+                "dataType": "Text",
+                "labelType": "Stacked",
+                "property": "ignore",
+                "dataTypeProps": {
+                  "fromChars": 1,
+                  "caseType": "Capitalise",
+                  "toChars": 30
+                },
+                "model": "data.ignore",
+                "isMandatory": false
+              },
+              "id": "8bca9979"
+            }
+          }
+        ]
+      },
+      {
+        "cols": [
+          {
+            "width": "33%",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "parentId": "id"
+                  },
+                  "view": "sys_template::b34d0e4f-27bf-40bd-acf6-0df03e87e06f",
+                  "code": "gotoView"
+                },
+                "label": "Site Constraints",
+                "buttonWidth": "Block"
+              },
+              "id": "0548d8ca"
+            }
+          },
+          {
+            "width": "33%",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "parentId": "id"
+                  },
+                  "view": "sys_template::3df8f3c8-52bd-4319-95ff-e37efc38a72a",
+                  "code": "gotoView"
+                },
+                "label": "Hazard",
+                "buttonWidth": "Block"
+              },
+              "id": "037a9908"
+            }
+          },
+          {
+            "width": "Default",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "parentId": "id"
+                  },
+                  "view": "sys_template::c16830ea-239f-a6a9-9b28-06586bea3878",
+                  "code": "gotoView"
+                },
+                "label": "Lining",
+                "buttonWidth": "Block"
+              },
+              "id": "d9385a6b"
+            }
+          }
+        ]
+      },
+      {
+        "cols": [
+          {
+            "width": "33%",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "parentId": "id"
+                  },
+                  "view": "sys_template::ab852f86-051e-43e6-a927-295dbd9d1c17",
+                  "code": "gotoView"
+                },
+                "label": "Ironworks",
+                "buttonWidth": "Block"
+              },
+              "id": "11b8388a"
+            }
+          },
+          {
+            "width": "Default",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "parentId": "id"
+                  },
+                  "view": "sys_template::c8e98805-44c1-48e8-a388-60fcc735cc7f",
+                  "code": "gotoView"
+                },
+                "label": "Dimensions / Chainage",
+                "buttonWidth": "Block"
+              },
+              "id": "b3eaf8a8"
+            }
+          }
+        ]
+      },
+      {
+        "cols": [
+          {
+            "width": "33%",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "parentId": "id"
+                  },
+                  "view": "sys_template::60eb8532-cde3-468c-bb88-1ef512aa907b",
+                  "code": "gotoView"
+                },
+                "label": "Traffic Management",
+                "buttonWidth": "Block"
+              },
+              "id": "3a990a5a"
+            }
+          },
+          {
+            "width": "33%",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "parentId": "id"
+                  },
+                  "view": "sys_template::dd0222f6-bcbf-4f5f-8603-f1a2c7b2e0fe",
+                  "code": "gotoView"
+                },
+                "label": "Additional Work",
+                "buttonWidth": "Block"
+              },
+              "id": "ad78baeb"
+            }
+          },
+          {
+            "width": "Default",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "parentId": "id"
+                  },
+                  "view": "sys_template::e7f3295e-df95-4c07-b704-74409db71f4a",
+                  "code": "gotoView"
+                },
+                "label": "Site Notes",
+                "buttonWidth": "Block"
+              },
+              "id": "da798b39"
+            }
+          }
+        ]
+      },
+      {
+        "cols": [
+          {
+            "width": "Default",
+            "alignment": "Left",
+            "component": {
+              "type": "button",
+              "buttonProps": {
+                "action": {
+                  "parameters": {
+                    "parentId": "id"
+                  },
+                  "view": "sys_template::2f3b82e5-1f45-4d67-8cd9-2770bd6a8c4d",
+                  "code": "gotoView"
+                },
+                "label": "Decorative Design",
+                "buttonWidth": "Block"
+              },
+              "id": "eb3a9a99"
+            }
+          }
+        ]
+      }
+    ],
+    "headerActions": [
+      {
+        "icon": "ion-camera",
+        "name": "Camera",
+        "action": "showCamera()",
+        "code": "camera"
+      }
+    ],
+    "footerRow": {
+      "type": "none"
+    }
+  },
+  "cas": 1504099570794692600,
+  "channels": [
+    "c0b04480-0057-4b95-ad29-23dc09c0a489_administrator"
+  ],
+  "name": "Site Home",
+  "viewType": "detail",
+  "deviceOrientation": "portrait",
+  "moduleId": "811b8349-2c96-89ae-487a-161b385b133b"
+}

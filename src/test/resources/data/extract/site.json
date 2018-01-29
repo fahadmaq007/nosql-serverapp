@@ -1,0 +1,82 @@
+{
+  "date": 1493214739069,
+  "preWorkSiteDamage": "None noted",
+  "siteExtendsToDesc": "Junction of Station Road",
+  "startLongLat": {
+    "latitude": 51.57818969399845,
+    "id": "startLongLat",
+    "longitude": -0.7063204495987065
+  },
+  "city": "Bourne End",
+  "siteExtendsFromDesc": "Junction of Cores End Road",
+  "weatherAtSurvey": "Dry",
+  "county": "Buckinghamshire",
+  "multiGps": {
+    "wayPoints": [
+      {
+        "latitude": 51.57818969399845,
+        "id": "startLongLat",
+        "longitude": -0.7063204495987065
+      },
+      {
+        "latitude": 51.5748607079282,
+        "id": "endLongLat",
+        "longitude": -0.7097594078262546
+      }
+    ],
+    "mapURI": "59a7f2e2e0a0d847b82b6fbe"
+  },
+  "schemeNumber": "SCM001",
+  "siteName": "Sample Site Test",
+  "surveyConditions": "Damp",
+  "environmentalConstraints": [],
+  "siteFeatures": [],
+  "type": "site",
+  "orgId": "c0b04480-0057-4b95-ad29-23dc09c0a489",
+  "roadClassification": [
+    "Urban",
+    "Single"
+  ],
+  "archived": false,
+  "cas": 1504099571009847000,
+  "createdTime": 1493214739068,
+  "lastUpdatedTime": 1504775911183,
+  "id": "494229f0-a731-46d3-bba4-b4506bfae980",
+  "moduleId": "811b8349-2c96-89ae-487a-161b385b133b",
+  "conditionsAtSurvey": "Wet",
+  "lastUpdatedBy": "vijeth.ag@causeway.com",
+  "formType": "adhoc",
+  "address1": "Furlong Road",
+  "siteRef": "CWY001",
+  "currentCondition": [
+    "Rutting",
+    "Potholes",
+    "Cracked"
+  ],
+  "demotest": "Demo 2",
+  "postcode": "SL8 5AQ",
+  "clientMeasure": 4000,
+  "parentId": "fefb066c-a1b8-4538-a524-d4a2f6fab17c",
+  "parentType": "client",
+  "endLongLat": {
+    "id": "endLongLat",
+    "mapURI": "59a7f2e2e0a0d847b82b6fb",
+    "latitude": 51.5748607079282,
+    "longitude": -0.7097594078262546
+  },
+  "modificationDate": 1504099571851,
+  "channels": [
+    "c0b04480-0057-4b95-ad29-23dc09c0a489_administrator",
+    "c0b04480-0057-4b95-ad29-23dc09c0a489_surfacing_supervisor",
+    "c0b04480-0057-4b95-ad29-23dc09c0a489_supervisor",
+    "c0b04480-0057-4b95-ad29-23dc09c0a489_surfacing",
+    "c0b04480-0057-4b95-ad29-23dc09c0a489_building_control"
+  ],
+  "existingSurface": [
+    "HRA",
+    "HFS"
+  ],
+  "formulae": 5400,
+  "jobNumber": "JOB001",
+  "status": "SUBMITTED"
+}

@@ -1,0 +1,254 @@
+{
+      "cas": 1504099570762252300,
+      "creationDate": 1493211791328,
+      "data": {},
+      "deviceOrientation": "portrait",
+      "documentType": "client",
+      "hasChangesToPublish": false,
+      "modificationDate": 1504099571685,
+      "name": "Client Detail",
+      "parentType": "sys_module",
+      "type": "sys_form",
+      "view": {
+        "footerRow": {
+          "cols": [
+            {
+              "component": {
+                "buttonProps": {
+                  "action": {
+                    "andAction": {
+                      "code": "gotoPreviousView"
+                    },
+                    "code": "cancel",
+                    "thenAction": {}
+                  },
+                  "buttonTheme": "Stable",
+                  "buttonWidth": "Full",
+                  "label": "Cancel"
+                },
+                "id": "d4d95859",
+                "isPrimary": false,
+                "type": "footerButton"
+              }
+            },
+            {
+              "component": {
+                "buttonProps": {
+                  "action": {
+                    "andAction": {
+                      "code": "gotoPreviousView"
+                    },
+                    "code": "submit",
+                    "thenAction": {}
+                  },
+                  "buttonTheme": "Assertive",
+                  "buttonWidth": "Full",
+                  "label": "Done"
+                },
+                "id": "8efac95b",
+                "isPrimary": true,
+                "type": "footerButton"
+              }
+            }
+          ],
+          "type": "two"
+        },
+        "header": {
+          "backComponent": {},
+          "right": {
+            "components": []
+          }
+        },
+        "rows": [
+          {
+            "cols": [
+              {
+                "alignment": "Left",
+                "component": {
+                  "fieldProps": {
+                    "dataType": "Text",
+                    "dataTypeProps": {
+                      "caseType": "Capitalise",
+                      "fromChars": 1,
+                      "toChars": 30
+                    },
+                    "helptext": "Enter Client Name",
+                    "isMandatory": false,
+                    "label": "Client Name",
+                    "labelType": "Stacked",
+                    "model": "data.clientName",
+                    "property": "clientName"
+                  },
+                  "id": "5369b83a",
+                  "type": "input"
+                },
+                "width": "Default"
+              },
+              {
+                "alignment": "Left",
+                "component": {
+                  "fieldProps": {
+                    "dataType": "Text",
+                    "dataTypeProps": {
+                      "caseType": "Capitalise",
+                      "fromChars": 1,
+                      "toChars": 30
+                    },
+                    "helptext": "Enter District / Area",
+                    "isMandatory": false,
+                    "label": "District / Area",
+                    "labelType": "Stacked",
+                    "model": "data.districtArea",
+                    "property": "districtArea"
+                  },
+                  "id": "4b1858fa",
+                  "type": "input"
+                },
+                "width": "Default"
+              },
+              {
+                "alignment": "Left",
+                "component": {
+                  "fieldProps": {
+                    "dataType": "Text",
+                    "dataTypeProps": {
+                      "caseType": "Capitalise",
+                      "fromChars": 1,
+                      "toChars": 30
+                    },
+                    "helptext": "Enter WBS",
+                    "isMandatory": false,
+                    "label": "WBS",
+                    "labelType": "Stacked",
+                    "model": "data.wbs",
+                    "property": "wbs"
+                  },
+                  "id": "a0781988",
+                  "type": "input"
+                },
+                "width": "Default"
+              }
+            ]
+          },
+          {
+            "cols": [
+              {
+                "alignment": "Left",
+                "component": {
+                  "fieldProps": {
+                    "dataType": "Text",
+                    "dataTypeProps": {
+                      "caseType": "Capitalise",
+                      "fromChars": 1,
+                      "toChars": 30
+                    },
+                    "helptext": "Enter Client Address 1",
+                    "isMandatory": false,
+                    "label": "Client Address 1",
+                    "labelType": "Stacked",
+                    "model": "data.clientAddress",
+                    "property": "clientAddress"
+                  },
+                  "id": "52fb5b7a",
+                  "type": "input"
+                },
+                "width": "Default"
+              },
+              {
+                "alignment": "Left",
+                "component": {
+                  "fieldProps": {
+                    "dataType": "Text",
+                    "dataTypeProps": {
+                      "caseType": "Capitalise",
+                      "fromChars": 1,
+                      "toChars": 30
+                    },
+                    "helptext": "Enter Client Address 2",
+                    "isMandatory": false,
+                    "label": "Client Address 2",
+                    "labelType": "Stacked",
+                    "model": "data.clientAddress2",
+                    "property": "clientAddress2"
+                  },
+                  "id": "8daa0b4a",
+                  "type": "input"
+                },
+                "width": "Default"
+              },
+              {
+                "alignment": "Left",
+                "component": {
+                  "fieldProps": {
+                    "dataType": "Text",
+                    "dataTypeProps": {
+                      "caseType": "Capitalise",
+                      "fromChars": 1,
+                      "toChars": 30
+                    },
+                    "helptext": "Enter Client City",
+                    "isMandatory": false,
+                    "label": "Client City",
+                    "labelType": "Stacked",
+                    "model": "data.clientCity",
+                    "property": "clientCity"
+                  },
+                  "id": "3359abb8",
+                  "type": "input"
+                },
+                "width": "Default"
+              }
+            ]
+          },
+          {
+            "cols": [
+              {
+                "alignment": "Left",
+                "component": {
+                  "fieldProps": {
+                    "dataType": "Text",
+                    "dataTypeProps": {
+                      "caseType": "Capitalise",
+                      "fromChars": 1,
+                      "toChars": 30
+                    },
+                    "helptext": "Enter Client County",
+                    "isMandatory": false,
+                    "label": "Client County",
+                    "labelType": "Stacked",
+                    "model": "data.clientCounty",
+                    "property": "clientCounty"
+                  },
+                  "id": "2b997879",
+                  "type": "input"
+                },
+                "width": "33%"
+              },
+              {
+                "alignment": "Left",
+                "component": {
+                  "fieldProps": {
+                    "dataType": "Text",
+                    "dataTypeProps": {
+                      "caseType": "Capitalise",
+                      "fromChars": 1,
+                      "toChars": 30
+                    },
+                    "helptext": "Enter Client Postcode",
+                    "isMandatory": false,
+                    "label": "Client Postcode",
+                    "labelType": "Stacked",
+                    "model": "data.clientPostcode",
+                    "property": "clientPostcode"
+                  },
+                  "id": "27b8c83a",
+                  "type": "input"
+                },
+                "width": "33%"
+              }
+            ]
+          }
+        ]
+      },
+      "viewType": "detail"
+    }
