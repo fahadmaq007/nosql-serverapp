@@ -29,7 +29,7 @@ public class Constants {
 	/**
 	 * Comma.
 	 */
-	public static final String COMMA = ", ";
+	public static final String COMMA = ",";
 
 	/**
 	 * HYPHEN.
@@ -99,6 +99,10 @@ public class Constants {
 	public static final String TYPE = "type";
 	
 	public static final String ID = "id";
+
+	public static final String CREATION_DATE = "createdOn";
+
+	public static final String DBL_COLAN = "::";
 
 	
 	/*

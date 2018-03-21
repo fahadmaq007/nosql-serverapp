@@ -4,32 +4,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.couchbase.client.core.CouchbaseException;
-import com.couchbase.client.core.event.consumers.LoggingConsumer;
-import com.couchbase.client.core.logging.CouchbaseLogLevel;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
 import com.couchbase.client.java.CouchbaseCluster;
+import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.document.json.JsonObject;
 import com.couchbase.client.java.env.CouchbaseEnvironment;
 import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
+import com.couchbase.client.java.error.TemporaryFailureException;
 import com.couchbase.client.java.query.N1qlQueryResult;
 import com.couchbase.client.java.query.N1qlQueryRow;
 import com.couchbase.client.java.query.ParameterizedN1qlQuery;
+import com.couchbase.client.java.util.retry.RetryBuilder;
 import com.maqbool.server.commons.PageContent;
 import com.maqbool.server.commons.PageDto;
 import com.maqbool.server.commons.PropertySpec;
 import com.maqbool.server.commons.QuerySpec;
 import com.maqbool.server.commons.Util;
 import com.maqbool.server.exception.DataAccessException;
+
+import rx.Observable;
+import rx.functions.Func1;
 
 /**
  * Implementation of the Repository interface that uses the synchronous API
@@ -38,6 +44,7 @@ import com.maqbool.server.exception.DataAccessException;
  * @author maqboolahmed
  */
 @org.springframework.stereotype.Repository
+@Qualifier("couchbaseDao")
 public class CouchbaseDao implements IDao {
 	Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -46,7 +53,7 @@ public class CouchbaseDao implements IDao {
 	@Value("${couchbase.nodes:localhost}")
 	private String nosqlnodes;
 
-	@Value("${couchbase.bucket:movielens}")
+	@Value("${couchbase.bucket:cmf_data}")
 	private String defaulBucketName;
 
 	private final String DEFAULT_SORT_PARAM = "-creationDate";
@@ -69,12 +76,10 @@ public class CouchbaseDao implements IDao {
 			CouchbaseEnvironment env = DefaultCouchbaseEnvironment
 					.builder()
 					.connectTimeout(10000)
-					.defaultMetricsLoggingConsumer(true,
-							CouchbaseLogLevel.INFO,
-							LoggingConsumer.OutputFormat.JSON_PRETTY)
 					.build();
 
 			cluster = CouchbaseCluster.create(env, SEED_IPS);
+//			cluster.authenticate("admin", "briter");
 		} catch (CouchbaseException e) {
 			logger.error("Either cluster creation or bucket open operation failed!!");
 			throw new DataAccessException(e);
@@ -115,12 +120,14 @@ public class CouchbaseDao implements IDao {
 				logger.debug(pq.toString());
 				N1qlQueryResult result = bucket.query(pq);
 				if (result.finalSuccess()) {
-					List<Map<String, Object>> content = new ArrayList<>();
+					List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 					for (N1qlQueryRow row : result) {
-						content.add(row.value().toMap());
+						JsonObject o = row.value();
+						Map m = o.toMap();
+						list.add(m);
 					}
-					PageContent<Map<String, Object>> pageData = new PageContent<>();
-					pageData.setList(content);
+					PageContent<Map<String, Object>> pageData = new PageContent<Map<String, Object>>();
+					pageData.setList(list);
 					return pageData;
 				} else {
 					logger.warn("Query returned with errors: "
@@ -155,4 +162,41 @@ public class CouchbaseDao implements IDao {
 		return sorts;
 	}
 	
+	@Override
+	public void bulkUpsert(List<Map<String, Object>> documents) throws DataAccessException {
+		if (documents != null && documents.size() > 0) {
+			List<JsonDocument> jsonDocs = toJsonDocuments(documents);
+			final Bucket bucket = cluster.openBucket(defaulBucketName);
+			Observable
+		    .from(jsonDocs)
+		    .flatMap(new Func1<JsonDocument, Observable<JsonDocument>>() {
+				@SuppressWarnings("unchecked")
+				@Override
+				public Observable<JsonDocument> call(JsonDocument docToInsert) {
+					return bucket.async().upsert(docToInsert)
+							.timeout(3000, TimeUnit.MILLISECONDS)
+							.retryWhen(RetryBuilder.anyOf(TemporaryFailureException.class)
+									.max(2).build());
+				}
+		    })
+		    .last()
+		    .toBlocking()
+		    .single();
+		}
+		
+	}
+	
+	private List<JsonDocument> toJsonDocuments(List<Map<String, Object>> docs) {
+		List<JsonDocument> documents = new ArrayList<JsonDocument>();
+		for (Map<String, Object> map : docs) {
+			JsonObject jsonObject = JsonObject.from(map);
+			String id = (String) map.get("_id");
+			if (id == null || id.length() == 0) {
+				id = Util.newUuid();
+			}
+			JsonDocument doc = JsonDocument.create(id, jsonObject);
+			documents.add(doc);
+		}
+		return documents;
+	}
 }

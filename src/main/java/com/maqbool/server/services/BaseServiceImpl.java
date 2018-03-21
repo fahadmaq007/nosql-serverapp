@@ -11,7 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import com.maqbool.server.dao.IDao;
 import com.maqbool.server.web.security.UserDetails;
 
 /**
@@ -21,9 +20,6 @@ import com.maqbool.server.web.security.UserDetails;
 public class BaseServiceImpl {
 
 	protected Logger logger = LoggerFactory.getLogger(getClass());
-
-	@Autowired
-	protected IDao dao;
 
 	@Autowired
 	protected Environment env;

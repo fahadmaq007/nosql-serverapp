@@ -26,9 +26,12 @@ jar {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+ext['tomcat.version'] = '7.0.59'
+
 dependencies {
 
 	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	
 	compile('org.springframework:spring-context')
     compile('org.springframework.security:spring-security-core')
     compile('org.springframework:spring-webmvc')
@@ -39,9 +42,8 @@ dependencies {
     compile('commons-io:commons-io:2.5')
     compile('commons-lang:commons-lang:2.6')
     
-    compile('com.couchbase.client:java-client:2.4.1')
-		
-    compile('ch.qos.logback:logback-classic:1.0.13')
+    compile('com.couchbase.client:java-client:2.5.4')
+	compile('org.lightcouch:lightcouch:0.2.0')
 		
     compile('com.fasterxml.jackson.core:jackson-annotations:2.8.8')
 
@@ -54,12 +56,18 @@ dependencies {
 	compile('io.springfox:springfox-swagger-ui:2.3.1')
 	
 	compile('org.apache.httpcomponents:httpclient:4.5.2')
+	compile('org.apache.tomcat.embed:tomcat-embed-core:7.0.59')
+	// https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-juli
+	compile group: 'org.apache.tomcat', name: 'tomcat-juli', version: '7.0.16'
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile group: 'org.mockito', name: 'mockito-all', version: '1.8.4'
 }
 
 bootRepackage {
-    mainClass = 'com.maqbool.server.web.controller.CMFApplication'
+    mainClass = 'com.maqbool.server.web.controller.ApplicationRunner'
 }
-
+bootRun {
+    systemProperties = System.properties
+}
 
