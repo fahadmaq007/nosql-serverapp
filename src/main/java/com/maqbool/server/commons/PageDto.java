@@ -30,7 +30,7 @@ public class PageDto implements Serializable {
 	 * Constructs with the default page & default page size.
 	 */
 	public PageDto() {
-		
+		this(DEFAULT_PAGE, DEFAULT_PAGESIZE);
 	}
 
 	/**

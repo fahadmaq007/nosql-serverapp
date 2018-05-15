@@ -7,6 +7,9 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.cloudant.client.api.model.Response;
+import com.google.gson.Gson;
+
 
 /**
  * Utility class with common operations.
@@ -89,5 +92,23 @@ public class Util {
 			}
 		}
 		return q;
+	}
+	
+	public static <T> T fromJson(String json, Class<T> clazz) {
+		final Gson gson = new Gson();
+		try {
+			return gson.fromJson(json, clazz);
+		} catch (com.google.gson.JsonSyntaxException ex) {
+			return null;
+		}
+	}
+
+	public static String toJson(Object o) {
+		final Gson gson = new Gson();
+		try {
+			return gson.toJson(o);
+		} catch (com.google.gson.JsonSyntaxException ex) {
+			return null;
+		}
 	}
 }

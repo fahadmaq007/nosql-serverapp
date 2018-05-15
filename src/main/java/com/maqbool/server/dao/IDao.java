@@ -26,7 +26,7 @@ public interface IDao {
 	 * @return {@link PageContent} of documents
 	 * @throws ServiceException
 	 */
-	public PageContent<Map<String, Object>> listDocuments(String[] filters, String[] sortParams,
+	public PageContent<Map> listDocuments(String[] filters, String[] sortParams,
 			PageDto page) throws DataAccessException;
 	
 	/**
@@ -34,5 +34,11 @@ public interface IDao {
 	 * @param documents of {@link JsonDocument}
 	 * @throws DataAccessException
 	 */
-	public void bulkUpsert(List<Map<String, Object>> documents) throws DataAccessException;
+	public List<Map> bulkUpsert(List<Map> documents) throws DataAccessException;
+	
+	public Map getDocumentById(String id) throws DataAccessException;
+	
+	public void setDataSource(String ds);
+	
+	public String getDataSource();
 }

@@ -96,6 +96,8 @@ public class Constants {
 	
 	public static final String ORG_ID = "orgId";
 	
+	public static final String SYS_DOC = "sys_";
+	
 	public static final String TYPE = "type";
 	
 	public static final String ID = "id";

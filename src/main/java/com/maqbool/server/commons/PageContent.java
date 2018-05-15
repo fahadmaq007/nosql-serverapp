@@ -1,6 +1,8 @@
 package com.maqbool.server.commons;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -32,4 +34,11 @@ public class PageContent<E> {
 		this.pageDto = pageDto;
 	}
 
+	@Override
+	public String toString() {
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("list", list == null ? 0 : list.size());
+		m.put("page", pageDto);
+		return m.toString();
+	}
 }

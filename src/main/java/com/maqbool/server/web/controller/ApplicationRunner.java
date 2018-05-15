@@ -11,6 +11,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 @SpringBootApplication(scanBasePackages = { "com.maqbool.server" })
 public class ApplicationRunner extends SpringBootServletInitializer {
 
+	
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(ApplicationRunner.class);

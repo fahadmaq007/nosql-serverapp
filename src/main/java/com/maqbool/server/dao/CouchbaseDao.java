@@ -43,8 +43,8 @@ import rx.functions.Func1;
  * 
  * @author maqboolahmed
  */
-@org.springframework.stereotype.Repository
-@Qualifier("couchbaseDao")
+//@org.springframework.stereotype.Repository
+//@Qualifier("couchbaseDao")
 public class CouchbaseDao implements IDao {
 	Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -95,7 +95,7 @@ public class CouchbaseDao implements IDao {
 	}
 
 	@Override
-	public PageContent<Map<String, Object>> listDocuments(
+	public PageContent<Map> listDocuments(
 			String[] filters, String[] sortParams,
 			PageDto page) throws DataAccessException {
 		try {
@@ -120,13 +120,13 @@ public class CouchbaseDao implements IDao {
 				logger.debug(pq.toString());
 				N1qlQueryResult result = bucket.query(pq);
 				if (result.finalSuccess()) {
-					List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+					List<Map> list = new ArrayList<Map>();
 					for (N1qlQueryRow row : result) {
 						JsonObject o = row.value();
 						Map m = o.toMap();
 						list.add(m);
 					}
-					PageContent<Map<String, Object>> pageData = new PageContent<Map<String, Object>>();
+					PageContent<Map> pageData = new PageContent<Map>();
 					pageData.setList(list);
 					return pageData;
 				} else {
@@ -163,7 +163,7 @@ public class CouchbaseDao implements IDao {
 	}
 	
 	@Override
-	public void bulkUpsert(List<Map<String, Object>> documents) throws DataAccessException {
+	public List<Map> bulkUpsert(List<Map> documents) throws DataAccessException {
 		if (documents != null && documents.size() > 0) {
 			List<JsonDocument> jsonDocs = toJsonDocuments(documents);
 			final Bucket bucket = cluster.openBucket(defaulBucketName);
@@ -183,12 +183,12 @@ public class CouchbaseDao implements IDao {
 		    .toBlocking()
 		    .single();
 		}
-		
+		return documents;
 	}
 	
-	private List<JsonDocument> toJsonDocuments(List<Map<String, Object>> docs) {
+	private List<JsonDocument> toJsonDocuments(List<Map> docs) {
 		List<JsonDocument> documents = new ArrayList<JsonDocument>();
-		for (Map<String, Object> map : docs) {
+		for (Map map : docs) {
 			JsonObject jsonObject = JsonObject.from(map);
 			String id = (String) map.get("_id");
 			if (id == null || id.length() == 0) {
@@ -198,5 +198,23 @@ public class CouchbaseDao implements IDao {
 			documents.add(doc);
 		}
 		return documents;
+	}
+
+	@Override
+	public Map getDocumentById(String id) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setDataSource(String ds) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getDataSource() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
